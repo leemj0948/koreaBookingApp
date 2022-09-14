@@ -53,7 +53,8 @@ const ClassCard = styled.p`
 const ClassName = styled.h1``;
 const Option = styled.p`
   margin: 0;
-  padding-left: 8rem;
+  display: flex;
+  justify-content: flex-end;
   font-size: 18px;
   color: #93b080;
   font-weight: bolder;
