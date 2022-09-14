@@ -22,9 +22,9 @@ const Course = () => {
   ];
   return (
     <>
-      {ClassDetail.map(list => {
+      {ClassDetail.map((list, key) => {
         return (
-          <ClassCard>
+          <ClassCard key={key}>
             <ClassName>{list.name}</ClassName>
             <Option>{list.option}</Option>
             <Detail>{list.detail}</Detail>
@@ -34,7 +34,10 @@ const Course = () => {
     </>
   );
 };
-const ClassCard = styled.div``;
+const ClassCard = styled.div`
+  width: 302px;
+  height: 180px;
+`;
 const ClassName = styled.h1``;
 const Option = styled.p``;
 const Detail = styled.p``;
