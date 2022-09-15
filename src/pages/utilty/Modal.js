@@ -4,11 +4,11 @@ import styled from 'styled-components';
 // react-icon
 import { FaWindowClose } from 'react-icons/fa';
 
-const Modal = () => {
+const Modal = props => {
   return (
     <ModalOption>
       <Header>
-        <FaWindowClose className="close_button" />
+        <FaWindowClose className="close_button" onClick={props.ModalClose} />
       </Header>
       <Body>
         <BodyHeader>$ 150.00</BodyHeader>

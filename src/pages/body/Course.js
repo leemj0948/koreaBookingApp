@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useState } from 'react';
 import Modal from '../utilty/Modal';
 
 const Course = () => {
+  const [ModalSwitch, setModalSwitch] = useState(false);
+
   const ClassDetail = [
     {
       name: 'Trial Class',
@@ -28,14 +29,14 @@ const Course = () => {
     <CardBox>
       {ClassDetail.map((list, key) => {
         return (
-          <ClassCard key={key} list={list}>
+          <ClassCard key={key} list={list} onClick={() => setModalSwitch(true)}>
             <ClassName>{list.name}</ClassName>
             <Option>{list.option}</Option>
             <Detail>{list.detail}</Detail>
           </ClassCard>
         );
       })}
-      <Modal />
+      {ModalSwitch && <Modal ModalClose={() => setModalSwitch(false)} />}
     </CardBox>
   );
 };
