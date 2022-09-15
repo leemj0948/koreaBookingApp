@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
+import Modal from '../utilty/Modal';
 
 const Course = () => {
   const ClassDetail = [
@@ -34,6 +35,7 @@ const Course = () => {
           </ClassCard>
         );
       })}
+      <Modal />
     </CardBox>
   );
 };
@@ -43,7 +45,8 @@ const CardBox = styled.div`
   align-items: center;
   padding: 1rem 2rem;
 `;
-const ClassCard = styled.p`
+const ClassCard = styled.div`
+  margin: 1rem 0;
   padding: 0 1rem;
   max-width: 302px;
   max-height: 180px;
