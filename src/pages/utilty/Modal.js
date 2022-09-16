@@ -1,10 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 // react-icon
 import { FaWindowClose } from 'react-icons/fa';
 
 const Modal = props => {
+  const Navigate = useNavigate();
+  const successPage = () => {
+    return Navigate('/paysuccess');
+  };
   return (
     <ModalOption>
       <Header>
@@ -22,7 +27,7 @@ const Modal = props => {
         </BodyMain>
       </Body>
       <Footer>
-        <PayButton>Pay</PayButton>
+        <PayButton onClick={() => successPage()}>Pay</PayButton>
       </Footer>
     </ModalOption>
   );

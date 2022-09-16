@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Course from './body/Course';
-import PaySuccess from './body/PaySuccess';
 //쿼리 파라미터로 바뀐 제목 별로 다른 페이지 보이기
 const Main = () => {
   return (
@@ -15,8 +14,7 @@ const Main = () => {
         </BackgroundImg>
    
        */}
-      {/* <Course /> */}
-      <PaySuccess />
+      <Course />
     </MainBody>
   );
 };

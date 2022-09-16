@@ -15,8 +15,9 @@ const PaySuccess = () => {
 };
 const BackGround = styled.section`
   display: block;
-  width: 100%;
-  height: 100%;
+  margin: 0;
+  max-width: 375px;
+  height: 542px;
   background-color: #eef5f1;
 `;
 const Header = styled.h1`
