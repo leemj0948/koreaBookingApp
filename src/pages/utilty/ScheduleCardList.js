@@ -10,19 +10,18 @@ const ScheduleCardList = () => {
 
   return (
     <Schedule>
-      {/* <CardList>dfds</CardList> */}
-      {/* <ScheduleCard>
+      <CardList>
         <Month>
           <p className="nth">nth</p>
           <p className="day">day</p>
         </Month>
         <ClassTime>time</ClassTime>
-      </ScheduleCard> */}
+      </CardList>
     </Schedule>
   );
 };
 const Schedule = styled.div``;
-const CardList = styled.div;
-// const Month = styled.div``;
-// const ClassTime = styled.div``;
+const CardList = styled.div``;
+const Month = styled.div``;
+const ClassTime = styled.div``;
 export default ScheduleCardList;
