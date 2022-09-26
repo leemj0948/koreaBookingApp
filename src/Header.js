@@ -1,10 +1,37 @@
-import React from 'react';
+import { React, useState, useEffect } from 'react';
 import styled from 'styled-components';
+
 //쿼리 파라미터로 제목 바꾸기
 const Header = () => {
+  const [title, setTitle] = useState('Reb Korean');
+  const path = window.location.pathname;
+
+  /**
+   * 타이틀 받는 함수
+   * @returns {string}
+   */
+  const getTitle = () => {
+    let titleName = 'Reb korean';
+    switch (path) {
+      case '/mypage':
+        titleName = 'My Page';
+        break;
+      case '/course':
+        titleName = 'Course';
+        break;
+      default:
+        titleName = titleName;
+    }
+
+    return setTitle(titleName);
+  };
+  useEffect(() => {
+    getTitle();
+  }, []);
+
   return (
     <Wapper>
-      <Title>Reb Korean</Title>
+      <Title>{title}</Title>
     </Wapper>
   );
 };

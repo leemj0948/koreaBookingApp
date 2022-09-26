@@ -11,7 +11,12 @@ const Footer = () => {
       <IconBox>
         <BsFillMenuButtonWideFill className="menu-icon" />
         <AiFillMail className="message" />
-        <FaUserCircle className="profile" />
+        <FaUserCircle
+          className="profile"
+          onClick={() => {
+            return (window.location.href = 'http://localhost:3000/mypage');
+          }}
+        />
       </IconBox>
     </FooterSection>
   );
