@@ -8,6 +8,7 @@ const Main = () => {
         <Title>I am here to help you guys.</Title>
         <NextButton />
       </BackgroundImg>
+      <Test />
     </MainBody>
   );
 };
@@ -22,3 +23,4 @@ const MainBody = styled.section`
 const BackgroundImg = styled.section``;
 const Title = styled.p``;
 const NextButton = styled.img``;
+const Test = styled.p``;
