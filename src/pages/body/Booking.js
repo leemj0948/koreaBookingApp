@@ -3,6 +3,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
 import 'moment/locale/ko';
+import '../../styles/calendar.css';
 
 // react-icon
 import { BsFillCaretLeftFill } from 'react-icons/bs';
@@ -17,11 +18,15 @@ function Booking() {
     console.log(today);
   };
   return (
-    <div>
+    <div className="calendar_packed">
+      {/* selectRange: 여러개 선택하도록 true,false 값  */}
       <Calendar
         onChange={setValue}
         value={value}
         defaultView="month"
+        formatShortWeekday={(locale, date) => {
+          return moment(date).format('ddd');
+        }}
         formatDay={(locale, date) => {
           return moment(date).format('DD');
         }}
@@ -32,6 +37,11 @@ function Booking() {
         prevLabel={<BsFillCaretLeftFill />}
         nextLabel={<BsFillCaretRightFill />}
         onClickDay={ClickDay}
+        tileClassName="class_tile"
+        view="month"
+        navigationLabel={({ date }) => {
+          return moment(date).format('MMMM');
+        }}
       />
     </div>
   );

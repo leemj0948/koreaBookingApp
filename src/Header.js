@@ -19,6 +19,8 @@ const Header = () => {
       case '/course':
         titleName = 'Course';
         break;
+      case '/booking':
+        titleName = 'Booking';
       default:
         titleName = titleName;
     }
