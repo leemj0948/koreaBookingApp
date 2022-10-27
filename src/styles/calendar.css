@@ -29,3 +29,7 @@
   font-size: 24px;
   font-weight: bolder;
 }
+/* 오늘 날짜 타일 */
+.react-calendar__tile--now {
+  border-radius: 50px;
+}
