@@ -4,6 +4,8 @@ import { BsFillXCircleFill } from 'react-icons/bs';
 import moment from 'moment';
 
 const BookingDetail = props => {
+  const { today, goCalendar } = props;
+
   let schadules = [
     { time: '09am - 10am', isClass: false },
     { time: '10am - 11am', isClass: false },
@@ -17,21 +19,22 @@ const BookingDetail = props => {
     { time: '6pm - 7pm', isClass: false },
   ];
   const changeDate = todays => {
-    let month = moment().month(todays);
-    let day = moment().date(todays);
+    let month = moment(todays).locale('en').format('MMMM');
+    let day = moment(todays).date();
+
     return `${month}. ${day}`;
   };
   return (
     <Wapper>
       <GoBack>
-        <BsFillXCircleFill />
+        <BsFillXCircleFill onClick={() => goCalendar()} />
       </GoBack>
 
-      <SelectDate>{changeDate(props.today)}</SelectDate>
+      <SelectDate>{changeDate(today)}</SelectDate>
       <DayDetail>
-        {schadules.map(list => {
+        {schadules.map((list, idx) => {
           return (
-            <TimeSet>
+            <TimeSet key={idx}>
               <HourChart>{list.time}</HourChart>
               <ActiveChart isClass={list.isClass} />
             </TimeSet>

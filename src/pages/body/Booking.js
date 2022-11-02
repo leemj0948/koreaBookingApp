@@ -25,11 +25,13 @@ function Booking() {
       setToday(ctValue);
     }
   };
+  const goCalendar = () => setIsDeatail(false);
+
   return (
     <div className="calendar_packed">
       {/* selectRange: 여러개 선택하도록 true,false 값  */}
       {isDeatail ? (
-        <BookingDetail today={today} />
+        <BookingDetail today={today} goCalendar={goCalendar} />
       ) : (
         <Calendar
           onChange={setValue}
