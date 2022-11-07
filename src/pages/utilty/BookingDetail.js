@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { BsFillXCircleFill } from 'react-icons/bs';
 import moment from 'moment';
@@ -6,7 +6,7 @@ import moment from 'moment';
 const BookingDetail = props => {
   const { today, goCalendar } = props;
 
-  let schadules = [
+  let schedule = [
     { time: '09am - 10am', isClass: false },
     { time: '10am - 11am', isClass: false },
     { time: '11am - 12am', isClass: false },
@@ -18,12 +18,32 @@ const BookingDetail = props => {
     { time: '5pm - 6pm', isClass: false },
     { time: '6pm - 7pm', isClass: false },
   ];
+  const [schedules, setSchedules] = useState(schedule);
   const changeDate = todays => {
     let month = moment(todays).locale('en').format('MMMM');
     let day = moment(todays).date();
 
     return `${month}. ${day}`;
   };
+  const clickSchedule = timeIdx => {
+    let schaduleData = schedules[timeIdx];
+    let shadulesCopy = [...schedules];
+
+    if (schaduleData.isClass) {
+      if (window.confirm('수업을 취소하겠습니까?')) {
+        schaduleData = { ...schaduleData, isClass: false };
+        shadulesCopy[timeIdx] = schaduleData;
+      }
+    } else {
+      if (window.confirm('이 시간으로 예약하시겠습니까')) {
+        schaduleData = { ...schaduleData, isChecked: true };
+        shadulesCopy[timeIdx] = schaduleData;
+      }
+    }
+    console.log(shadulesCopy);
+    return setSchedules(shadulesCopy);
+  };
+  console.log('render', schedules);
   return (
     <Wapper>
       <GoBack>
@@ -32,14 +52,19 @@ const BookingDetail = props => {
 
       <SelectDate>{changeDate(today)}</SelectDate>
       <DayDetail>
-        {schadules.map((list, idx) => {
-          return (
-            <TimeSet key={idx}>
-              <HourChart>{list.time}</HourChart>
-              <ActiveChart isClass={list.isClass} />
-            </TimeSet>
-          );
-        })}
+        {console.log(schedules, 'html')}
+        {schedules[0] &&
+          schedules.map((list, idx) => {
+            return (
+              <TimeSet key={idx}>
+                <HourChart>{list.time}</HourChart>
+                <ActiveChart
+                  isClassStyle={list.isClass}
+                  onClick={() => clickSchedule(idx)}
+                />
+              </TimeSet>
+            );
+          })}
       </DayDetail>
     </Wapper>
   );
@@ -83,5 +108,5 @@ const HourChart = styled.div`
 const ActiveChart = styled.div`
   width: 150px;
   height: 24px;
-  background-color: ${props => (props.isClass ? '#B9DF7F' : '#defcec')};
+  background-color: ${props => (props.isClassStyle ? '#B9DF7F' : '#defcec')};
 `;
